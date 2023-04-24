@@ -7,8 +7,8 @@ public class SmartPhone {
     private String model;
     private String os;
     Account account;
-    AddressBook[] addressBooks = new AddressBook[3];
-    String[] apps = new String[4];
+    AddressBook[] addressBooks;
+    String[] apps;
     //ArrayList<String> x = new ArrayList<>();
 
     //コンストラクタ
@@ -45,6 +45,7 @@ public class SmartPhone {
      * @return　配列の要素に空きがない場合は何もせずにfalseを返す
      */
     public boolean addAddressBook(AddressBook[] addressBooks){
+        this.addressBooks = new AddressBook[addressBooks.length];
         for (var value: this.addressBooks){
             if(value != null){
                 return false;
@@ -61,6 +62,7 @@ public class SmartPhone {
      * @param apps Mainクラスのフィールド
      */
     public void installApps(String[] apps) {
+        this.apps = new String[apps.length];
         for (int i = 0; i < apps.length; i++){
             this.apps[i] = apps[i];
         }

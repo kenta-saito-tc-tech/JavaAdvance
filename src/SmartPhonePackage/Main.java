@@ -1,5 +1,7 @@
 package SmartPhonePackage;
 
+import StoneGamePackage.src.StoneGame;
+
 public class Main {
     public static void main(String[] args) {
         //インスタンス
@@ -11,8 +13,6 @@ public class Main {
         };
         SmartPhone sp = new SmartPhone("Iphone12", "mac");
 
-        String[] apps = {"地図", "計算機", "ZOOM", "メモ帳"};
-
         sp.setAccount(ac);
         sp.displayDeviceInfo();
         sp.displayMyAccount();
@@ -22,7 +22,18 @@ public class Main {
         }else {
             System.out.println("エラーが発生しました");
         }
-        sp.installApps(apps);
+
+        /**
+         * StoneGameの追加
+         */
+        StoneGame st = new StoneGame();
+        App[] apps = {st};
+        boolean appFlg = sp.install(apps);
+        if (appFlg == true){
+            System.out.println("アプリのインストール完了");
+        }else {
+            System.out.println("エラーが発生しました");
+        }
         sp.displayAppList();
 
     }

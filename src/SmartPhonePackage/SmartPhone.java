@@ -8,7 +8,7 @@ public class SmartPhone {
     private String os;
     Account account;
     AddressBook[] addressBooks;
-    String[] apps;
+    App[] apps;
     //ArrayList<String> x = new ArrayList<>();
 
     //コンストラクタ
@@ -61,11 +61,17 @@ public class SmartPhone {
      * appsに要素を追加する
      * @param apps Mainクラスのフィールド
      */
-    public void installApps(String[] apps) {
-        this.apps = new String[apps.length];
+    public boolean install(App[] apps) {
+        this.apps = new App[apps.length];
+        for (var value: this.apps){
+            if(value != null){
+                return false;
+            }
+        }
         for (int i = 0; i < apps.length; i++){
             this.apps[i] = apps[i];
         }
+        return true;
     }
 
     /**

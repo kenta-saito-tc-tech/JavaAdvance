@@ -2,6 +2,8 @@ package StoneGamePackage.src;
 
 import SmartPhonePackage.App;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class StoneGame implements App {
@@ -51,24 +53,43 @@ public class StoneGame implements App {
     public void gameSetting() {
         int inputStone = -1; //仮
         int inputSteal = -1; //仮
+        boolean flgForStone = true;
+        boolean flgForSteal = true;
+
         BasicMethod.oneNewBorderLine();
         Scanner scn = new Scanner(System.in);
         System.out.println("石取りゲームを開始します。");
-        while(inputStone < 10 || inputStone > 100){
-            System.out.print("石の総数は?>>");
-            inputStone = scn.nextInt();
-            if(inputStone < 10 || inputStone > 100){
-                System.out.println("10~100の間でお願いします");
+        while(flgForStone){
+            try{
+                System.out.print("石の総数は?>>");
+                inputStone = scn.nextInt();
+                if(inputStone < 10 || inputStone > 100){
+                    System.out.println("10~100の間でお願いします");
+                }else {
+                    flgForStone = false;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("数値ではありません。");
+                System.out.println("最初からやり直します");
+                gameSetting();
             }
         }
         setHowManyStone(inputStone); //総数セット
         System.out.print("石のイニシャルは?>>");
         setStoneInitial(scn.next()); //イニシャルセット
-        while(inputSteal < 1 || inputSteal > 10){
-            System.out.print("１度に取れる石の数は?>>");
-            inputSteal = scn.nextInt();
-            if(inputSteal < 1 || inputSteal > 10){
-                System.out.println("1~10の間でお願いします");
+        while(flgForSteal){
+            try{
+                System.out.print("１度に取れる石の数は?>>");
+                inputSteal = scn.nextInt();
+                if(inputSteal < 1 || inputSteal > 10){
+                    System.out.println("1~10の間でお願いします");
+                }else {
+                    flgForSteal = false;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("数値ではありません。");
+                System.out.println("最初からやり直します");
+                gameSetting();
             }
         }
         setHowManySteal(inputSteal); //取れる個数セット

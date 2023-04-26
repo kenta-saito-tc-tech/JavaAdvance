@@ -1,15 +1,15 @@
 package SmartPhonePackage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SmartPhone {
     //フィールド
     private Model model;
     private Os os;
     Account account;
-    AddressBook[] addressBooks;
-    App[] apps;
-    //ArrayList<String> x = new ArrayList<>();
+    List<AddressBook> listOfAddressBook = new ArrayList<>();
+    List<App> listOfApps = new ArrayList<>();
 
     //コンストラクタ
     public SmartPhone(Model model, Os os) {
@@ -45,14 +45,11 @@ public class SmartPhone {
      * @return　配列の要素に空きがない場合は何もせずにfalseを返す
      */
     public boolean addAddressBook(AddressBook[] addressBooks){
-        this.addressBooks = new AddressBook[addressBooks.length];
-        for (var value: this.addressBooks){
-            if(value != null){
+            if(!(this.listOfAddressBook.isEmpty())){
                 return false;
-            }
         }
         for (int i = 0; i < addressBooks.length; i++){
-                this.addressBooks[i] = addressBooks[i];
+                this.listOfAddressBook.add(addressBooks[i]);
         }
         return true;
     }
@@ -62,14 +59,11 @@ public class SmartPhone {
      * @param apps Mainクラスのフィールド
      */
     public boolean install(App[] apps) {
-        this.apps = new App[apps.length];
-        for (var value: this.apps){
-            if(value != null){
+            if(!(this.listOfApps.isEmpty())){
                 return false;
             }
-        }
         for (int i = 0; i < apps.length; i++){
-            this.apps[i] = apps[i];
+            this.listOfApps.add(apps[i]);
         }
         return true;
     }
@@ -79,7 +73,7 @@ public class SmartPhone {
      */
     public void displayAppList(){
         System.out.println("アプリ一覧：");
-        for(var value: apps){
+        for(var value: listOfApps){
             System.out.println(value);
         }
     }

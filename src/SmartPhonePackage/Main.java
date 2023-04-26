@@ -11,7 +11,7 @@ public class Main {
                 new AddressBook("sato", "090-yyy-yyyy", "yyy-yyyy@email.com"),
                 new AddressBook("kato", "080-zzz-zzzz", "zzz-zzzz@email.com"),
         };
-        SmartPhone sp = new SmartPhone("Iphone12", "mac");
+        SmartPhone sp = new SmartPhone(Model.IPHONE, Os.IOS);
 
         sp.setAccount(ac);
         sp.displayDeviceInfo();

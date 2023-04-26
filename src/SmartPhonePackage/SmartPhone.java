@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class SmartPhone {
     //フィールド
-    private String model;
-    private String os;
+    private Model model;
+    private Os os;
     Account account;
     AddressBook[] addressBooks;
     App[] apps;
     //ArrayList<String> x = new ArrayList<>();
 
     //コンストラクタ
-    public SmartPhone(String model, String os) {
+    public SmartPhone(Model model, Os os) {
         this.model = model;
         this.os = os;
     }
